@@ -1,0 +1,23 @@
+<div *ngIf='status==1;then login' style="text-align:center"></div>
+<div *ngIf='status==2;then dashboard_admin' style="text-align:center"></div>
+<div *ngIf='status==3;then dashboard_user' style="text-align:center"></div>
+<ng-template #login>
+<form #f =ngForm (ngSubmit)= "validateUser(f)" class="col-md-3 col-md-offset-4">
+<h1>Login Page</h1>
+<label>Username: </label><input type="text" name = 'uName' ngModel class="form-control"/>
+<label>Password: </label><input type="password" name = 'password' ngModel class="form-control"/>
+
+<div>
+<label>User Type:</label>
+<select name = 'rights' ngModel="Admin" class="form-control">
+<option value="Admin">Admin</option>
+<option value="Customer">Customer</option>
+</select>
+</div>
+<br>
+<button type = "submit" class="btn btn-success"> Login </button>
+<!-- <button class="btn btn-success"> Register </button> -->
+</form>
+</ng-template>
+<ng-template #dashboard_admin><app-admin-home></app-admin-home></ng-template>
+<ng-template #dashboard_user><app-customer-home></app-customer-home></ng-template>

@@ -1,0 +1,34 @@
+<form class="col-md-5" (ngSubmit)="addPackage(f)" #f=ngForm>
+  <div class="form-group">
+    <label for="ptype">Package Type</label>
+    <select class="form-control" name="ptype" id="ptype" #name=ngModel ngModel="Food">
+      <option value="Food" selected="selected">Food</option>
+      <option value="Care">Care</option>
+    </select>
+</div>
+  <div class="form-group">
+      <label for="pname">Package Name</label>
+      <input type="text" #name=ngModel ngModel minlength=5 name="pname" (focus)="func1()" (focusout)="func()" required class="form-control" id="pname"/>
+  </div>
+  <div *ngIf=name.invalid>
+  <div *ngIf=name.errors.required class="err"> Name cannot be blank!</div>
+  <div *ngIf=name.errors.minlength class="err">  Name cannot be less than 5 characters!</div>
+  </div>
+  <div class="form-group">
+    <label for="desc">Description</label>
+    <input type="text" #desc=ngModel ngModel required minlength=20 ngModel name ="desc" class="form-control" id="desc"/>
+</div>
+<div *ngIf=desc.invalid>
+<div *ngIf=desc.errors.required class="err"> Description cannot be blank!</div>
+<div *ngIf=desc.errors.minlength class="err"> Description cannot be less than 20 characters!</div>
+</div>
+  <div class="form-group">
+      <label for="stock">Stock</label>
+      <input type="text" #stock=ngModel required ngModel name="stock" class="form-control" id="stock"/>
+  </div>
+  <div *ngIf=!stock.valid class="err"> Stock value cannot be blank!</div>
+  <button type="submit" [disabled] = '!f.valid' class="btn btn-primary">Add</button>
+  <div *ngIf=status>Data added successfully!</div>
+</form>
+
+  
