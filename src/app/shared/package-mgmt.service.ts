@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FoodCarePackage } from '../home-page/admin-home/package-mgmt/package';
 import { map } from 'rxjs/operators';
+import * as cors from 'cors';
+const corsHandler = cors({origin: true});
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +19,7 @@ export class PackageMgmtService {
     
   updatePackage(fcpackage:FoodCarePackage,id){
     console.log(id);
-    this.http.put('https://roopam-tcs.firebaseio.com/fcpackage/'+id, fcpackage).subscribe(mydata=>{
+    this.http.put('https://roopam-tcs.firebaseio.com/fcpackage/'+id+".json", fcpackage).subscribe(mydata=>{
       console.log("Updated data");
     });
   }
