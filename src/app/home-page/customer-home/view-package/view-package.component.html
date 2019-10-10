@@ -1,11 +1,10 @@
 <h1>
-    My Subscriptions
-    </h1>
-    <form class="col-md-3" >
-    <div *ngFor = "let pack of packages">
-    Name: {{pack.pname}} <br> Description: {{pack.desc}} <br> Stock: {{pack.stock}}
-    
-    <input type="checkbox" class="form-control" ngModel name="{{pack.id}}">
-    </div>
-    <input type="submit" value="Subscribe">
-    </form>
+        My Subscriptions
+        </h1>
+        <form class="col-md-3" #f =ngForm (ngSubmit)="action(f)" >
+        <div *ngFor = "let pack of packages" class="panel panel-body">
+        <label>{{pack.pname}} </label> <br><label>Description: {{pack.desc}}</label> <br><label> Stock: {{pack.stock}} </label><br>
+        <input type="checkbox" ngModel name="{{pack.id}}">
+        </div>
+        <input type="submit" value="UnSubscribe">
+        </form>
