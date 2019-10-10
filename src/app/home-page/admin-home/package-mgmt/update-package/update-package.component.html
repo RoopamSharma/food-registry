@@ -1,14 +1,14 @@
 <form class="col-md-5" (ngSubmit)="updatePackage(f,fcpackage.id)" #f=ngForm>
   <div class="form-group">
     <label for="ptype">Package Type</label>
-    <select class="form-control" name="ptype" id="ptype" #name=ngModel ngModel={{fcpackage.ptype}} disabled>
+    <select class="form-control" name="ptype" id="ptype" #name=ngModel ngModel={{fcpackage.ptype}} >
       <option value="Food" selected="selected">Food</option>
       <option value="Care">Care</option>
     </select>
 </div>
   <div class="form-group">
       <label for="pname">Package Name</label>
-      <input type="text" #name=ngModel ngModel={{fcpackage.pname}} minlength=5 name="pname" (focus)="func1()" (focusout)="func()" required class="form-control" id="pname"/>
+      <input type="text" #name=ngModel ngModel={{fcpackage.name}} minlength=5 name="pname" (focus)="func1()" (focusout)="func()" required class="form-control" id="pname"/>
   </div>
   <div *ngIf=name.invalid>
   <div *ngIf=name.errors.required class="err"> Name cannot be blank!</div>
@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <label for="desc">Description</label>
-    <input type="text" #desc=ngModel ngModel={{fcpackage.desc}} required minlength=20 ngModel name ="desc" class="form-control" id="desc"/>
+    <input type="text" #desc=ngModel ngModel={{fcpackage.description}} required minlength=20 ngModel name ="desc" class="form-control" id="desc"/>
 </div>
 <div *ngIf=desc.invalid>
 <div *ngIf=desc.errors.required class="err"> Description cannot be blank!</div>
@@ -28,7 +28,7 @@
   </div>
   <div *ngIf=!stock.valid class="err"> Stock value cannot be blank!</div>
   <button type="submit" [disabled] = '!f.valid' class="btn btn-primary">Update</button>
-  <button type="button" [disabled] = '!f.valid' class="btn btn-danger">Delete</button>
+  <button type="button" class="btn btn-danger" (click)="deletePackage(fcpackage.id)">Delete</button>
   <br>
   <br>
   <div *ngIf=status>Data updated successfully!</div>

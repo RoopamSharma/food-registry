@@ -1,3 +1,10 @@
-<p>
-  subscribe works!
-</p>
+<h1>
+    List Of Packages
+    </h1>
+    <form class="col-md-3" #f =ngForm (ngSubmit)="action(f)">
+    <div *ngFor = "let pack of packages">
+    Name: {{pack.pname}} <br> Description: {{pack.desc}} <br> Stock: {{pack.stock}} <br> Package Type: {{pack.ptype}}
+    <input type="checkbox" class="form-control" ngModel name="{{pack.id}}">
+    </div>
+    <input type="submit" value="Subscribe">
+    </form>

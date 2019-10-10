@@ -1,6 +1,8 @@
+<div *ngIf='status==0;then register' style="text-align:center"></div>
 <div *ngIf='status==1;then login' style="text-align:center"></div>
 <div *ngIf='status==2;then dashboard_admin' style="text-align:center"></div>
 <div *ngIf='status==3;then dashboard_user' style="text-align:center"></div>
+
 <ng-template #login>
 <form #f =ngForm (ngSubmit)= "validateUser(f)" class="col-md-3 col-md-offset-4">
 <h1>Login Page</h1>
@@ -16,8 +18,9 @@
 </div>
 <br>
 <button type = "submit" class="btn btn-success"> Login </button>
-<!-- <button class="btn btn-success"> Register </button> -->
+<button class="btn btn-success" (click)="register()"> Register </button>
 </form>
 </ng-template>
 <ng-template #dashboard_admin><app-admin-home></app-admin-home></ng-template>
 <ng-template #dashboard_user><app-customer-home></app-customer-home></ng-template>
+<ng-template #register><app-register></app-register></ng-template>

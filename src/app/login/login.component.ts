@@ -20,5 +20,7 @@ constructor(public router: Router,private loginservice: LoginService) { }
 
 ngOnInit() {
 }
-
+register(){
+    this.status = 0;
+}
 }

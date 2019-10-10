@@ -1,4 +1,7 @@
 <div class="container">
-    <app-update-package *ngFor="let item of items" [fcpackage]="item">
-    </app-update-package>
+    <label class="panel-title">Please select package to update</label>
+    <div *ngFor="let item of items" (click)="loadData(item)" class="panel panel-default">
+        <div class="panel-body hoverable">{{item.pname}}</div>
+    </div>
 </div>
+<router-outlet></router-outlet>

@@ -1,3 +1,31 @@
-<p>
-  register works!
-</p>
+<div class="container">
+    <div class="row">
+    <form name="registration-form" (ngSubmit)="register(f)" #f =ngForm>
+    <div *ngIf="!isAdmin">
+    <h4>Login Credentials</h4>
+    Choose your Username: <input type="text" ngModel name="username" required /><br>
+    Create Password: <input type="password" ngModel name="password" required /><br>
+    </div>
+    <h4>Household Information</h4>
+    Has an Admin created a household for you? <input type="checkbox" ngModel name="adminPremade" /><br>
+    Household ID: <input type="number" name="houseID" ngModel [value]="houseID" disabled/><br>
+    Name of Head of Household: <input type="text" name="headName" ngModel required /><br>
+    Address: <input type="text" name="address" ngModel required /><br>
+    Number of Family Members: <input type="number" ngModel name="numFamMembers" [(ngModel)]="numFamilyMembers" (change)="resizeArrays()" required /><br>
+    <!-- Two-way data binding does not seem to work here, address later. -->
+    <div *ngFor="let index of numbers">
+    <div>
+    <h4>Family Member # {{index+1}}</h4>
+    Name: <input type="text" name="FamilyName{{index}}" ngModel [(ngModel)]="names[index]" required /><br>
+    Age: <input type="number" name="FamilyAge{{index}}" ngModel [(ngModel)]="ages[index]" required /><br>
+    </div>
+    </div>
+    <!-- Embedded Subscription Sign-Up Area??? -->
+    <!--
+    <div *ngFor="let package of subscriptions">
+      </div>
+      -->
+      <button type="submit" class="btn btn-success" [disabled]="!f.valid">Submit</button>
+    </form>
+    </div>
+    </div>
