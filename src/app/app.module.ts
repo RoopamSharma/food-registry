@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {AdminHomeComponent} from './home-page/admin-home/admin-home.component';
 import {CustomerHomeComponent} from './home-page/customer-home/customer-home.component';
 import { PackageListComponent } from './home-page/admin-home/package-mgmt/package-list.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PackageListComponent } from './home-page/admin-home/package-mgmt/packag
     RegisterComponent,
     AdminHomeComponent,
     CustomerHomeComponent,
-    PackageListComponent
+    PackageListComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,FormsModule,

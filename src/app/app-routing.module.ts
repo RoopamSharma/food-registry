@@ -9,10 +9,12 @@ import { UpdateHouseCustomerComponent } from './home-page/customer-home/update-h
 import { ViewPackageComponent } from './home-page/customer-home/view-package/view-package.component';
 import { PackageListComponent } from './home-page/admin-home/package-mgmt/package-list.component';
 import { AdminHomeComponent } from './home-page/admin-home/admin-home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 // from admin home files
 {path:'app-admin-home',component:AdminHomeComponent},
+{path:'app-login',component:LoginComponent},
 {path: 'create-package', component: CreatePackageComponent},
 {path: 'update-package', component: UpdatePackageComponent},
 {path: 'update-house-admin', component: UpdateHouseAdminComponent },
