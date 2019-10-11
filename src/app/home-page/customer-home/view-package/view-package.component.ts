@@ -9,9 +9,10 @@ styleUrls: ['./view-package.component.css']
 })
 export class ViewPackageComponent implements OnInit {
 packages : any [] = []
+unsubscribed=false;
 constructor(private packageService : PackageMgmtService,private router:Router) { }
-
-selectedPackages: any[]=[]
+newList=[]
+unsubscribedPackages: any[]=[]
 selectedIDs: any[]=[]
 action(f){
 for(var key in f.value)
@@ -24,18 +25,29 @@ this.selectedIDs.push(key)
 }
 }
 this.selectedIDs.forEach((val)=>{
-this.packageService.loadPackage(val).subscribe((item:any)=>{
+this.packageService.loadPackage(val).subscribe((item)=>{
 item['stock'] += 1
 this.packageService.updatePackage(item,val).subscribe(()=>{
-
-        this.selectedIDs = this.selectedIDs.filter(a=>a!=item["id"]);         
+        console.log(val)               
     });
-
   });
-});
+})
+this.unsubscribed = true;  
+console.log(this.selectedIDs)
+for(var k in this.packages){
+  console.log(this.packages[k].id)
+  console.log(this.selectedIDs.indexOf(this.packages[k].id))
 
-this.packageService.subscribePackage(this.selectedIDs)
-this.router.navigate(['app-view-package']);
+  if(this.selectedIDs.indexOf(this.packages[k].id)==-1 && k!="id"){
+    console.log(this.packages[k].id)
+    this.newList.push(this.packages[k].id)
+  }
+}
+
+
+
+this.packageService.subscribePackage(this.newList);
+//this.router.navigate(['view-package-customer']);
 }
 ngOnInit() {
 this.packageService.loadSubscriberData().subscribe(item => {

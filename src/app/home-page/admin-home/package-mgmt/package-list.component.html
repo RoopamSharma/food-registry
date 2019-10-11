@@ -1,6 +1,6 @@
-<div class="container">
-    <label class="panel-title">Please select package to update</label>
-    <div *ngFor="let item of items" (click)="loadData(item)" class="panel panel-default">
+<div class="container col-md-4">
+    <h5 class="panel-title">Please select the package to edit</h5>
+    <div *ngFor="let item of items" (click)="loadData(item)" class="panel panel-default" style="margin-top:20px">
         <div class="panel-body hoverable">{{item.pname}}</div>
     </div>
 </div>

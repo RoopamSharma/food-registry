@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UpdatePackageComponent implements OnInit {
   status:number;
+  status1=false;
   fcpackage: FoodCarePackage;
   constructor(private packagemgmtservice:PackageMgmtService,private route:ActivatedRoute) { }
 
@@ -32,6 +33,7 @@ export class UpdatePackageComponent implements OnInit {
   deletePackage(id){
     console.log("the id passed is: ",id);
     this.packagemgmtservice.deletePackage(id);
+    this.status1=true;
     console.log("data deleted");
   }
 }

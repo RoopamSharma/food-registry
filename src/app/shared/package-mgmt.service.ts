@@ -65,11 +65,6 @@ export class PackageMgmtService {
     return this.http.get(
     'https://roopam-tcs.firebaseio.com/fcpackage/'+id+".json"
     )
-    .pipe(
-    map(responseData => {
-    return responseData;
-    })
-    );
     }
     
     subscribePackage(getList : any[]){

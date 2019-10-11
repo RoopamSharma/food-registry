@@ -1,10 +1,22 @@
-<h1>
-    List Of Packages
-    </h1>
-    <form class="col-md-3" #f =ngForm (ngSubmit)="action(f)">
-    <div *ngFor = "let pack of packages">
+<div *ngIf='!subscribed'>
+
+    <form class="col-md-5" #f =ngForm (ngSubmit)="action(f)">
+        <h4  *ngIf="packages.length>0">
+            List Of Packages
+            </h4>
+            <h4 *ngIf="packages.length==0">
+                No new packages available    
+            </h4>
+       <div class="panel-group padded">
+            <div *ngFor = "let pack of packages" class="panel panel-default padded">
     Name: {{pack.pname}} <br> Description: {{pack.desc}} <br> Stock: {{pack.stock}} <br> Package Type: {{pack.ptype}}
-    <input type="checkbox" class="form-control" ngModel name="{{pack.id}}">
-    </div>
-    <input type="submit" value="Subscribe">
-    </form>
+    <input type="checkbox" class="panel-body padded"  ngModel name="{{pack.id}}">
+    <br>
+</div> 
+    <input *ngIf="packages.length>0" type="submit"  class="btn btn-success margined" value="Subscribe">
+</div>
+</form>
+</div>
+<div *ngIf=subscribed>
+    <h4>Subscibed to packages successfully!</h4>
+</div>

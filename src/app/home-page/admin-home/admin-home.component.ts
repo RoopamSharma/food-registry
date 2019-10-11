@@ -22,7 +22,7 @@ logout(){
     console.log('logged out');
     this.session.set("status",1);
     this.loginStatus=false;
-    this.router.navigate(['app-login']);
+    this.router.navigate(['/']);
 }
 
 }
